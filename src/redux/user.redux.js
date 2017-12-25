@@ -37,7 +37,8 @@ export function user(state=initState,action) {
 // action creator
 
 //验证成功
-function authSuccess (data) {
+function authSuccess (obj) {
+	const {pwd,...data} = obj
 	return { type:AUTH_SUCCESS, payload:data } 
 }
 
@@ -62,6 +63,7 @@ export function update(data) {
 	return dispatch=>{
 		axios.post('/user/update',data)
 		.then(res=>{
+			console.log(res.data)
 			if (res.status === 200 && res.data.code === 0) {
 				dispatch(authSuccess(res.data.data))
 			}else{
