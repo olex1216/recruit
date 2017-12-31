@@ -32,6 +32,7 @@ import Register from './container/register/register'
 
 import AuthRoute from './component/authroute/authroute'
 import Dashboard from './component/dashboard/dashboard'
+import Chat from './component/chat/chat'
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f
 
@@ -53,6 +54,7 @@ render(
 				<Route path='/geniusinfo' component={GeniusInfo}></Route>
 				<Route path='/login' component={Login}></Route>
 				<Route path='/register' component={Register}></Route>
+				<Route path='/chat/:userid' component={Chat}></Route>
 				<Route component={Dashboard}></Route>
 			</Switch>
 

@@ -11,30 +11,25 @@ import {
 import  { connect} from 'react-redux';
 import  { Redirect} from 'react-router-dom';
 import { register } from '../../redux/user.redux'
+import controlForm from '../../component/controlform/controlform'
 
 
 @connect(
 	state=>state.user,
 	{ register }
 )
+@controlForm
 class Register extends Component {
 	constructor(props) {
 		super(props)
-		this.state={
-			type:'genius',
-			user:'',
-			pwd:'',
-			repeatpwd:'',
-		}
 		this.handleRegister = this.handleRegister.bind(this)
 	}
-	handleChange(name,value){
-		this.setState({
-			[name]:value
-		});
+	componentDidMount() {
+		this.props.handleChange('type','genius')
 	}
+
 	handleRegister(){
-		this.props.register(this.state)
+		this.props.register(this.props.state)
 	}
 	render() {
 		const RadioItem = Radio.RadioItem
@@ -46,27 +41,27 @@ class Register extends Component {
 				{this.props.msg ? <p className="error-msg">{this.props.msg}</p> : null}
 				<List>
 					<InputItem
-						onChange={value=>this.handleChange('user',value)}
+						onChange={value=>this.props.handleChange('user',value)}
 					>用户</InputItem>
 					<WhiteSpace />
 					<InputItem
-						onChange={value=>this.handleChange('pwd',value)}
+						onChange={value=>this.props.handleChange('pwd',value)}
 					>密码</InputItem>
 					<WhiteSpace />
 					<InputItem
-						onChange={value=>this.handleChange('repeatpwd',value)}
+						onChange={value=>this.props.handleChange('repeatpwd',value)}
 					>确认密码</InputItem>
 					<WhiteSpace />
 					<RadioItem 
-						checked={this.state.type==='genius'}
-						onChange={()=>this.handleChange('type','genius')}
+						checked={this.props.state.type==='genius'}
+						onChange={()=>this.props.handleChange('type','genius')}
 					>
 						牛人
 					</RadioItem>
 					<WhiteSpace />
 					<RadioItem 
-						checked={this.state.type==='boss'}
-						onChange={()=>this.handleChange('type','boss')}
+						checked={this.props.state.type==='boss'}
+						onChange={()=>this.props.handleChange('type','boss')}
 					>
 						Boss
 					</RadioItem>
