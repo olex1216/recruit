@@ -22,6 +22,7 @@ Router.get('/list',function(req,res) {
 
 //消息列表
 Router.get('/getmsglist',function (req,res) {
+	// Chat.remove({},function(e,d){})
 	const user = req.cookies.userid
 	User.find({},function(e,userdoc){
 		// 取出用户集合里的用户列表

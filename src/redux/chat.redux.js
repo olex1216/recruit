@@ -8,7 +8,7 @@ const MSG_LIST = 'MSG_LIST'
 // 读取信息
 const MSG_RECV = 'MSG_RECV'
 // 标识已读
-const MSG_READ = 'MSG_READ'
+// const MSG_READ = 'MSG_READ'
 
 
 const initState = {
@@ -23,7 +23,7 @@ export function chat(state=initState, action){
 		case MSG_LIST:
 			return {...state,users:action.payload.users,chatmsgs:action.payload.msgs,unread:action.payload.msgs.filter(v=>!v.read&&v.to===action.payload.userid).length}
 		case MSG_RECV:
-			const n = action.payload.to==action.userid?1:0
+			const n = action.payload.to===action.userid?1:0
 			return { ...state,chatmsgs:[...state.chatmsgs,action.payload],unread:state.unread+n}
 		// case MSG_READ:
 		default:

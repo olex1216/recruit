@@ -5,13 +5,12 @@ import {Switch, Route} from 'react-router-dom'
 
 import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
+import Msg from '../../component/msg/msg'
 import User from '../../component/user/user'
 import NavLinkBar from '../../component/navlink/navlink'
 import {getMsgList, recvMsg} from '../../redux/chat.redux'
 
-function Msg(){
-	return <h2>消息列表页面</h2>
-}
+
 
 
 

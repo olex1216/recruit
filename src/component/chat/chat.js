@@ -91,7 +91,7 @@ export default class Chat extends Component {
 					):(
 						<List key={v._id}>
 							<Item
-								extra={<img src={avatar} />}
+								extra={<img src={avatar} alt="头像" />}
 							 	className='chat-me'
 							>
 							{v.content}
@@ -111,6 +111,7 @@ export default class Chat extends Component {
 
 								<div>
 									<span
+										role="img"
 										style={{marginRight:15}}
 										onClick={()=>{
 											this.setState({

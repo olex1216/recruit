@@ -12,10 +12,7 @@ import {logoutSubmit} from '../../redux/user.redux'
 	{logoutSubmit}
 )
 export default class User extends Component {
-	constructor(props){
-		super(props)
-		// this.logout = this.logout.bind(this)
-	}
+
 	logout(){
 		const alert = Modal.alert
 		alert('注销', '确认退出登录吗???',[
