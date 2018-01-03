@@ -41,6 +41,22 @@ Router.get('/getmsglist',function (req,res) {
 	})
 })
 
+Router.post('/readmsg',function(req,res) {
+	const userid = req.cookies.userid
+	const {from} = req.body
+	Chat.update(
+		{from,to:userid},
+		{'$set':{read:true}},
+		{'multi':true},
+		function(err,doc){
+			console.log(doc);
+			if (!err) {
+				return res.json({code:0,num:doc.nModified})
+			}
+			return res.json({code:1,msg:'修改失败'})
+	})
+
+})
 
 // 用户注册
 Router.post('/register',function (req,res) {
@@ -62,7 +78,7 @@ Router.post('/register',function (req,res) {
 		})
 	})
 })
-
+// 登录
 Router.post('/login',function (req,res) {
 	const {user,pwd} = req.body
 	// console.log(md5Pwd(pwd))
