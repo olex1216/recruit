@@ -12,6 +12,10 @@ import {logoutSubmit} from '../../redux/user.redux'
 	{logoutSubmit}
 )
 export default class User extends Component {
+	constructor(props){
+		super(props)
+		this.logout = this.logout.bind(this)
+	}
 
 	logout(){
 		const alert = Modal.alert
@@ -20,12 +24,15 @@ export default class User extends Component {
 			{ text: '确认', onPress: () => {
 				browserCookie.erase('userid')
 				this.props.logoutSubmit()
+				this.props.history.push('/login')
 			}}
 		])
 	}
 
 	render(){
+
 		const props = this.props
+		console.log(props)
 		const Item = List.Item
 		const Brief = Item.Brief
 		return props.user?(

@@ -36,7 +36,6 @@ class Register extends Component {
 		return (
 			<div>
 				<Logo />
-				<h2>我是注册页面</h2>	
 				{this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null }
 				{this.props.msg ? <p className="error-msg">{this.props.msg}</p> : null}
 				<List>
