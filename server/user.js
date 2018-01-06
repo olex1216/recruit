@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
+import model from './model'
 const Router = express.Router()//路由
 const utility = require('utility')
 
-const model = require('./model')
 const User = model.getModel('user')
 const Chat = model.getModel('chat')
 
@@ -33,7 +33,6 @@ Router.get('/getmsglist',function (req,res) {
 		// 只筛选出发送者和接受者符合条件的消息
 		Chat.find({'$or':[{from:user},{to:user}]},function(err,doc){
 			if (!err) {
-				console.log(doc)
 				return res.json({code:0,msgs:doc, users:users})
 			}
 		})

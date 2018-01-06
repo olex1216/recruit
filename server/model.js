@@ -33,10 +33,12 @@ for(let m in models){
 	mongoose.model(m, new mongoose.Schema(models[m]))
 }
 
-module.exports = {
+const model ={
 	getModel:function(name){
 		return mongoose.model(name)
 	}
 }
+
+export default model
 
 

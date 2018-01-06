@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import  { connect } from 'react-redux'
 import  { NavBar } from 'antd-mobile'
-import { Route} from 'react-router-dom'
+import { Route,Redirect} from 'react-router-dom'
 
 import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
@@ -62,9 +62,9 @@ export default class Dashboard extends Component {
 		]
 
 		const page = navList.find(v=>v.path===pathname)
-		return(
+		return page ?(
 			<div>
-				<NavBar className="fixd-header" mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
+				<NavBar className="fixd-header" mode='dark'>{page.title}</NavBar>
 				<div style={{marginTop:45}}>
 						<QueueAnim type="scaleX" duration={800}>
 								<Route key={page.path} path={page.path} component={page.component}></Route>						
@@ -72,7 +72,7 @@ export default class Dashboard extends Component {
 				</div>
 				<NavLinkBar data={navList}></NavLinkBar>			
 			</div>
-		)
+		) : <Redirect to='/msg'></Redirect>
 
 	}
 }
