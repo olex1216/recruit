@@ -86,16 +86,6 @@ app.use(function(req,res,next){
 	))
 
 	let context={}
-	// const markup = renderToString(
-	// 	(<Provider store={store}>
-	// 		<StaticRouter
-	// 			location={req.url}
-	// 			context={context}
-	// 		>	
-	// 			<App/>
-	// 		</StaticRouter>
-	// 	</Provider>)
-	// )
 	res.write(`
 		<!DOCTYPE html>
 		<html lang="en">
@@ -131,27 +121,6 @@ app.use(function(req,res,next){
 		res.end()
 	})
 
-	// const pageHtml = `
-	// <!DOCTYPE html>
-	// <html lang="en">
-	//   <head>
-	//     <meta charset="utf-8">
-	//     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	//     <meta name="theme-color" content="#000000">
-	//     <title>React App</title>
-	//     <link rel="stylesheet" href="/${staticPath['main.css']}">
-	//   </head>
-	//   <body>
-	//     <noscript>
-	//       You need to enable JavaScript to run this app.
-	//     </noscript>
-	//     <div id="root">${markup}</div>
-	//     <script src='/${staticPath['main.js']}'></script>
-	//   </body>
-	// </html>
-	// `
-	// res.send(pageHtml)
-	// return res.sendFile(path.resolve('build/index.html'))
 })
 
 
