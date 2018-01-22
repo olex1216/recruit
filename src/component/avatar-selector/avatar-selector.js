@@ -7,6 +7,8 @@ export default class AvatarSelector extends Component {
 		selectAvatar: PropTypes.func.isRequired
 	}
 
+	// #x = 0;
+
 	constructor(props) {
 		super(props)
 		this.state={}

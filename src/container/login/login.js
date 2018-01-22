@@ -26,6 +26,7 @@ class Login extends Component {
 		this.register = this.register.bind(this)
 		this.handleLogin = this.handleLogin.bind(this)
 	}
+	
 
 	handleLogin(){
 		this.props.login(this.props.state)
