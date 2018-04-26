@@ -46,16 +46,16 @@ class Login extends Component {
 				<List>
 					<InputItem
 						onChange={value=>this.props.handleChange('user',value)}
-					>用户</InputItem>
+					>用户222</InputItem>
 					<WhiteSpace />
 					<InputItem
 						onChange={value=>this.props.handleChange('pwd',value)}
 						type="password"
-					>密码</InputItem>
+					>密码222</InputItem>
 				</List>
 				<WhiteSpace />
 				<WingBlank>
-					<Button onClick={this.handleLogin}type='primary'>登录</Button>
+					<Button onClick={this.handleLogin}type='primary'>登录343</Button>
 					<WhiteSpace />
 					<Button type='ghost' onClick={this.register}>注册</Button>
 				</WingBlank>	
