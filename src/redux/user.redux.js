@@ -1,6 +1,6 @@
 import axios from 'axios'
 import  { getRedirectPath } from '../utils';
-
+const utility = require('utility')
 /***************************************/
 
 //constant
@@ -42,7 +42,7 @@ export function user(state=initState,action) {
 //验证成功
 function authSuccess (obj) {
 	const {pwd,...data} = obj
-	return { type:AUTH_SUCCESS, payload:data } 
+	return { type:AUTH_SUCCESS, payload:data }
 }
 
 // 错误消息提示
@@ -54,7 +54,10 @@ function errorMsg (msg) {
 export function loadData(userInfo) {
 	return {type:LOAD_DATA,payload:userInfo}
 }
-
+function md5Pwd (pwd) {
+	const salt = 'olex_CHP_1216_!@#';
+	return utility.md5(utility.md5(pwd+salt))
+}
 //注销
 export function logoutSubmit(){
 	return { type:LOGOUT }
@@ -83,10 +86,13 @@ export function update(data) {
 
 // action -- 登录
 export function login({user,pwd}) {
+	console.log(md5Pwd(pwd))
+	console.log(utility.md5(pwd+'olex_CHP_1216_!@#'))
+	console.log(utility.md5(pwd))
 	if(!user || !pwd){
 		return errorMsg("用户名或密码错误")
 	}
-	return dispatch=>{	
+	return dispatch=>{
 		axios.post('/user/login',{user,pwd})
 			.then(res=>{
 				if (res.status === 200 && res.data.code === 0) {
@@ -107,7 +113,7 @@ export function register({user,pwd,repeatpwd,type}) {
 		return errorMsg("两次输入密码不一致")
 	}
 
-	return dispatch=>{	
+	return dispatch=>{
 		axios.post('/user/register',{user,pwd,type})
 			.then(res=>{
 				if (res.status === 200 && res.data.code === 0) {

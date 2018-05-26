@@ -26,7 +26,7 @@ class Login extends Component {
 		this.register = this.register.bind(this)
 		this.handleLogin = this.handleLogin.bind(this)
 	}
-	
+
 
 	handleLogin(){
 		this.props.login(this.props.state)
@@ -58,7 +58,7 @@ class Login extends Component {
 					<Button onClick={this.handleLogin}type='primary'>登录343</Button>
 					<WhiteSpace />
 					<Button type='ghost' onClick={this.register}>注册</Button>
-				</WingBlank>	
+				</WingBlank>
 			</div>
 		)
 	}
